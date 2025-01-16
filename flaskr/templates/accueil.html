@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_flask_WStation.ico') }}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- fichier de style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Page d'accueil - White Station Project</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Bienvenue sur le projet White Station</h1>
+    <h1 class="mt-2">Bienvenue sur le projet White Station</h1>
+    <p>Pour voir les statistiques des analyses c'est par ici</p>
+    <p class="btn btn-primary">
+        <a href="{{ url_for('statistiques_resultats') }}" class="text-white">Cliquez-ici</a>
+    </p>
+    <div id="charts">
+        <img src="{{ url_for('static', filename='total_malwares.png') }}" alt="Total Malwares">
+    </div>
+
+    <!-- Bootstrap core JS -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
 </body>
 </html>

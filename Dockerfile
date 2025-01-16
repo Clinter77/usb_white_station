@@ -8,11 +8,11 @@ WORKDIR /app
 RUN apk add --no-cache gcc g++ musl-dev jpeg-dev zlib-dev libjpeg make
 
 # Installer les dépendances Python
-COPY requirements.txt .
+COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Installer les dépendances système nécessaires pour matplotlib
-#RUN apk add --no-cache gcc musl-dev freetype-dev libpng-de
+# RUN apk add --no-cache gcc musl-dev freetype-dev libpng-de
 # RUN apk add --no-cache gcc g++ musl-dev
 # installation de matplotlib
 # RUN pip install matplotlib
@@ -31,4 +31,4 @@ COPY . .
 EXPOSE 5000
 
 # Commande pour exécuter l'application
-CMD ["python", "run.py"]
+CMD ["python", "run.py", "--host=0.0.0.0"]

@@ -2,10 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>statistiques_resultats</title>
+    <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_flask_WStation.ico') }}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- fichier de style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-    <h1>résultats d'analyses</h1>
-    <img src="data:image/png;base64,{{ img_data }}" alt="Graphique">
+<body class="container">
+    <h1 class="mt-2">résultats d'analyses</h1>
+    <!-- <img src="data:image/png;base64,{{ img_data }}" alt="Graphique"> -->
+    <div id="charts">
+        <img src="{{ url_for('static', filename='total_malwares.png') }}" alt="Total Malwares">
+    </div>
+
+    <!-- Bootstrap core JS -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
 </body>
 </html>
