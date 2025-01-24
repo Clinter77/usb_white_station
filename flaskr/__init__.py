@@ -56,10 +56,64 @@ def create_app(test_config=None):
         return render_template('index.html')
     
     
+    # fonctionnel avant
+    # @app.route('/accueil')
+    # def accueil():
+    #     print("page accueil")
+    #     return render_template('accueil.html')
+
     @app.route('/accueil')
     def accueil():
         print("page accueil")
-        return render_template('accueil.html')
+        # values = {
+        #         "usb_id": 0,
+        #         "usb_name": "Usb noire 32Go Jean Vier"
+        # }
+        # values = [
+        #     {
+        #         "usb_id": 0,
+        #         "usb_name": "Usb noire 32Go Jean Vier"
+        #     },
+        #     {
+        #         "usb_id": 1,
+        #         "usb_name": "Usb bleu 64Go Jean Vier"
+        #     },
+        #     {
+        #         "usb_id": 2,
+        #         "usb_name": "Usb verte 16Go Jean Vier"
+        #     }
+        # ]
+
+        data = [
+            {
+                "usb_id": 0,
+                "usb_name": "Usb noire 32Go Jean Vier",
+                "details": {
+                    "capacity": "32Go",
+                    "brand": "Jean Vier"
+                }
+            },
+            {
+                "usb_id": 1,
+                "usb_name": "Usb bleu 64Go Jean Vier",
+                "details": {
+                    "capacity": "64Go",
+                    "brand": "Jean Vier"
+                }
+            },
+            {
+                "usb_id": 2,
+                "usb_name": "Usb verte 16Go Jean Vier",
+                "details": {
+                    "capacity": "16Go",
+                    "brand": "Jean Vier"
+                }
+            }
+        ]
+    
+    
+        # Pass the entire list of values to the template
+        return render_template('accueil.html', data=data)
     
     @app.route('/statistiques')
     def statistiques():
@@ -91,49 +145,58 @@ def create_app(test_config=None):
         # buf.seek(0)
         # img = base64.b64encode(buf.getvalue()).decode('ascii')
 
-        with open('./json_files/MalwaresJsonExample_01.json') as f:
-            data = json.load(f)
+        
             
         try:
             # Exemple de génération de graphique
             # plt.plot([1, 2, 3], [4, 5, 6])
             # plt.savefig('static/total_malwares.png')
+            # with open('./json_files/MalwaresJsonExample_01.json') as f:
+            #     data = json.load(f)
 
-            usb_ids = [usb['usb_id'] for usb in data['usb_analysis']]
-            total_malwares = [usb['total_malwares'] for usb in data['usb_analysis']]
+            # usb_analysis = data
+            # print("usb_analysis :\n")
+            # print(usb_analysis)
+            pass
+            
+
+
+            # usb_ids = [usb_analysis['usb_id'] for usb in data['usb_analysis']]
+            # total_malwares = [usb['total_malwares'] for usb in data['usb_analysis']]
 
             # Créer un graphique avec Matplotlib
-            fig, ax = plt.subplots()
-            ax.pie([usb_ids['value1'], usb_ids['value2'], total_malwares['value1'], total_malwares['value2']], labels=['Label1', 'Label2', 'Label3'], autopct='%1.1f%%')
+            # fig, ax = plt.subplots()
+            # ax.pie([data[usb_analysis['value1']], data['value2'], data['value1'], total_malwares['value2']], labels=['Label1', 'Label2', 'Label3'], autopct='%1.1f%%')
             # Extract categories and values
             # categories = data['categories']
             # values = data['values']
             # plt.show()
             
 
-            plt.bar(usb_ids, total_malwares)
-            plt.xlabel('USB ID')
-            plt.ylabel('Total Malwares')
-            plt.title('Total Malwares per USB')
+            # plt.bar(usb_ids, total_malwares)
+            # plt.xlabel('USB ID')
+            # plt.ylabel('Total Malwares')
+            # plt.title('Total Malwares per USB')
 
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            save_path = os.path.join(current_dir, 'static', 'total_malwares.png')
-            plt.savefig(save_path)
-            plt.close()
-            print(f"Chart saved at {save_path}")
+            # current_dir = os.path.dirname(os.path.abspath(__file__))
+            # save_path = os.path.join(current_dir, 'static', 'total_malwares.png')
+            # plt.savefig(save_path)
+            # plt.close()
+            # print(f"Chart saved at {save_path}")
         except Exception as e:
             print(f"Error generating chart: {e}")
         # MatplotlibChart.generate_chart(data)
 
         # return render_template('statistiques_resultats.html', img_data=img)
         # return render_template('statistiques_resultats.html', data=data)
-        message_console =  render_template_string('''
-            <script>
-                console.log("Ceci est un message de debug depuis Python, pour la redirection /statistiques_resultats");
-            </script>
-        ''')
+        # message_console =  render_template_string('''
+        #     <script>
+        #         console.log("Ceci est un message de debug depuis Python Flask, pour la redirection /statistiques_resultats");
+        #     </script>
+        # ''')
     
         statistiques_resultats_page = render_template('statistiques_resultats.html')
-        return message_console + statistiques_resultats_page
+        # return message_console + statistiques_resultats_page
+        return statistiques_resultats_page
 
     return app
