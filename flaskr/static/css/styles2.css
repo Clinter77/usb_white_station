@@ -1,24 +1,24 @@
 /* styles.css */
 * {
-    color: white;
+    color: rgb(12, 12, 57);
 }
 body {
 
     text-align: center;
     width: 100vw;
     height: 100vh;
-    background-image: url("/static/istockphoto_1363932383.jpg"); /* L'image en fond */
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,0.5) 0%, rgba(9,9,121,0.5) 35%, rgba(0,212,255,0.5) 100%);
     background-size: cover;
     background-repeat: no-repeat;
-    color: white;
     font-family: Arial, sans-serif;
 }
 .container {
-    opacity: 0.5;
+    opacity: 0.75;
 }
 h1 {
     text-align: center;
-    color: white;
+    color: rgb(44, 34, 34);
 }
 hr {
     border: 2px solid white;

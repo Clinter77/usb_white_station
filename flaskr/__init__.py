@@ -1,5 +1,5 @@
 # flaskr/__init__.py
-from flask import Flask, render_template, render_template_string, jsonify, send_from_directory
+from flask import Flask, render_template, render_template_string, jsonify, send_from_directory, redirect, url_for, session
 from flask_bootstrap import Bootstrap
 import os
 import json
@@ -114,13 +114,22 @@ def create_app(test_config=None):
                 }
             }
         ]
+
+        session['usb_data'] = usb_data
+        # return redirect(url_for('statistiques'))
     
         # Pass the entire list of values to the template
-        return render_template('accueil.html', usb_data=usb_data)
-    
+        return render_template('accueil.html', usb_data=session['usb_data'])
+        # return jsonify([datas.to_json() for datas in usb_data])
+
     @app.route('/statistiques')
     def statistiques():
-        return render_template('statistiques_resultats.html')
+        usb_datas_list_content = []
+        with open('./json_files/MalwaresJsonExample_01.json', 'r') as f:
+            usb_datas_list_content = json.load(f)
+            f.close()
+        return render_template('statistiques_resultats.html', usb_datas_list_content=usb_datas_list_content)
+        # return render_template('statistiques_resultats.html')
     
     @app.route('/statistiques_resultats')
     def statistiques_resultats():

@@ -15,7 +15,7 @@
     <h1 class="mt-2">Bienvenue sur le projet White Station</h1>
     <p>Pour voir les statistiques des analyses c'est par ici</p>
     <p class="btn btn-primary">
-        <a href="{{ url_for('statistiques_resultats') }}" class="text-white">Cliquez-ici</a>
+        <a href="{{ url_for('statistiques') }}" class="text-white">Cliquez-ici</a>
     </p>
     <!-- <div id="charts">
         <img src="{{ url_for('static', filename='total_malwares.png') }}" alt="Total Malwares">
@@ -23,14 +23,14 @@
 
     <!-- lorsque les values correspondent à un json -->
     <script> 
-        // usb_data = {{ usb_data | tojson }};
-        // console.log("usb_data:", usb_data);  // This will log to the browser console
+        usb_data = {{ usb_data | tojson }};
+        console.log("usb_data:", usb_data);  // This will log to the browser console
     </script>
-    <script>
+    <!-- <script>
         // Convert the data to JSON format and log it to the console
-        const usb_data = {{ usb_data | tojson }};
+        // const usb_data = {{ usb_data | tojson }};
         console.log("USB Devices Data:", usb_data);
-    </script>
+    </script> -->
 
     <!-- cas d'utilisation avec liste imbriquant du json -->
     <h1>List of USB Devices</h1>

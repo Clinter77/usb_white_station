@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_flask_WStation.ico') }}">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- Bootstrap Icons CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- fichier de style -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>White Station Project</title>
@@ -20,11 +22,25 @@
             background-repeat: no-repeat;
             color: white;
         }
+        div {
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+        }
     </style>
 </head>
 <body>
     <h1>Welcome on the White Station Project application</h1>
-    <img src="../static/natalie-cameron-diaz.gif" alt="A fun GIF" class="mt-5">
+    <div>
+        <img src="../static/natalie-cameron-diaz.gif" alt="A fun GIF" class="mt-5">
+    </div>
+    <div>
+        <h2>
+            <a href="{{ url_for('accueil') }}">
+                <i class="bi bi-arrow-right text-white">&nbsp;Accueil</i>
+            </a>
+        </h2>
+    </div>
+    
 
     <!-- Bootstrap core JS -->
     <!-- Placed at the end of the document so the pages load faster -->
