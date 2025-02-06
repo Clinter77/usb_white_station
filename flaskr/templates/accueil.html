@@ -23,14 +23,21 @@
 
     <!-- lorsque les values correspondent à un json -->
     <script> 
-        const data = {{ data | tojson }};
-        console.log("data:", data);  // This will log to the browser console
+        // usb_data = {{ usb_data | tojson }};
+        // console.log("usb_data:", usb_data);  // This will log to the browser console
+    </script>
+    <script>
+        // Convert the data to JSON format and log it to the console
+        const usb_data = {{ usb_data | tojson }};
+        console.log("USB Devices Data:", usb_data);
     </script>
 
     <!-- cas d'utilisation avec liste imbriquant du json -->
     <h1>List of USB Devices</h1>
+    <hr>
     <ul>
-        {% for item in data %}
+        {% for item in usb_data %}
+        <hr class="item_hr">
         <li>
             <strong>ID:</strong> {{ item.usb_id }}<br>
             <strong>Name:</strong> {{ item.usb_name }}<br>
@@ -40,8 +47,10 @@
                 <li>Brand: {{ item.details.brand }}</li>
             </ul>
         </li>
+        <hr class="item_hr">
         {% endfor %}
     </ul>
+    <hr>
 
     <!-- Bootstrap core JS -->
     <!-- Placed at the end of the document so the pages load faster -->

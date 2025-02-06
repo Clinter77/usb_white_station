@@ -84,7 +84,7 @@ def create_app(test_config=None):
         #     }
         # ]
 
-        data = [
+        usb_data = [
             {
                 "usb_id": 0,
                 "usb_name": "Usb noire 32Go Jean Vier",
@@ -111,9 +111,8 @@ def create_app(test_config=None):
             }
         ]
     
-    
         # Pass the entire list of values to the template
-        return render_template('accueil.html', data=data)
+        return render_template('accueil.html', usb_data=usb_data)
     
     @app.route('/statistiques')
     def statistiques():

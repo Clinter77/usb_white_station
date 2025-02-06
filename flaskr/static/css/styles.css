@@ -17,3 +17,9 @@ h1 {
     text-align: center;
     color: white;
 }
+hr {
+    border: 2px solid white;
+}
+.item_hr {
+    border: 2px dashed white;
+}
