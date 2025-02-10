@@ -128,7 +128,8 @@ def create_app(test_config=None):
         with open('./json_files/MalwaresJsonExample_01.json', 'r') as f:
             usb_datas_list_content = json.load(f)
             f.close()
-        return render_template('statistiques_resultats.html', usb_datas_list_content=usb_datas_list_content)
+        session['usb_datas_list_content']=usb_datas_list_content
+        return render_template('statistiques_resultats.html', usb_datas_list_content=session['usb_datas_list_content'])
         # return render_template('statistiques_resultats.html')
     
     @app.route('/statistiques_resultats')

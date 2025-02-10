@@ -12,8 +12,8 @@
     <!-- fichier de style -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
 </head>
-<body class="container">
-    <h1 class="mt-2">résultats d'analyses 2</h1>
+<body class="container-fluid">
+    <h1 class="mt-2">résultats d'analyses</h1>
     <!-- <img src="data:image/png;base64,{{ img_data }}" alt="Graphique"> -->
     <!-- <div id="charts">
         <img src="{{ url_for('static', filename='total_malwares.png') }}" alt="Total Malwares">
@@ -27,19 +27,27 @@
             {% endif %}
         </ul>
     </div> -->
-    <div>
+    <!-- <div>
         {% if usb_datas_list_content %}
+            <p>{{ usb_datas_list_content }}</p>
             <ul>
-                {% for usb_data in usb_datas_list_content %}
-                    <li>{{ usb_datas_list_content }}</li>
-                    <!-- <li>{{ usb_data.usb_id }}</li> -->
-                    <!-- <li>{{ usb_datas_list_content[key] }}</li> -->
-                    <!-- <li>{{ usb_datas_list_content[usb_id] }}</li> -->
+                {% for element in usb_datas_list_content %}
+                    {% for index in range(element | length) %}
+                        {% for element in usb_datas_list_content[index] %}
+                            <td>{{ element }}</td>
+                            {% for nested_elem in element %}
+                                <td>{{ nested_elem }}</td> -->
+                                <!-- <li>{{ usb_data.usb_id }}</li> -->
+                                <!-- <li>{{ usb_datas_list_content[key] }}</li> -->
+                                <!-- <li>{{ usb_datas_list_content[usb_id] }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
                 {% endfor %}
             </ul>
         {% endif %}
-    </div>
-    <div>
+    </div> -->
+    <!-- <div>
         <ul>
             {% if usb_datas_list_content %}
                 {% for usb_data in usb_datas_list_content %}
@@ -52,6 +60,30 @@
                 <li>{{ usb_datas }}</li>
             {% endfor %}
         </ul>
+    </div> -->
+    <!-- <p>ci-dessous</p> -->
+    <div>
+        {% if usb_datas_list_content %}
+            <!-- {{ usb_datas_list_content.usb_datas_list_content }} -->
+            <ul> 
+                {% for usb_data in usb_datas_list_content.usb_datas_list_content %}
+                    <hr class="item_hr">
+                    <li>
+                        <strong>Clé USB</strong><br>
+                        <strong>ID:</strong> {{ usb_data.usb_id }}<br>
+                        <strong>total_malwares:</strong> {{ usb_data.total_malwares }}<br>
+                        {% if usb_data.malware_types %}
+                        <strong>Details:</strong>
+                            {% if usb_data.malware_types.virus %}<td>virus: {{ usb_data.malware_types.virus }}</td>{% endif %}
+                            {% if usb_data.malware_types.trojan %}<td>trojan: {{ usb_data.malware_types.trojan }}</td>{% endif %}
+                            {% if usb_data.malware_types.ransomware %}<td>ransomware: {{ usb_data.malware_types.ransomware }}</td>{% endif %}
+                            {% if usb_data.malware_types.worm %}<td>worm: {{ usb_data.malware_types.worm }}</td>{% endif %}
+                        {% endif %}
+                    </li>
+                    <hr class="item_hr">
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
     <script>
         // usb_data = {{ usb_datas_list_content }}
