@@ -115,14 +115,11 @@ def create_app(test_config=None):
             }
         ]
 
-        # session['usb_data'] = usb_data
-        print("Rendering accueil.html")
-        print("usb_data:", usb_data)
-        # print("session['usb_data']:", session['usb_data'])
+        session['usb_data'] = usb_data
         # return redirect(url_for('statistiques'))
     
         # Pass the entire list of values to the template
-        return render_template('accueil.html', usb_data=usb_data)
+        return render_template('accueil.html', usb_data=session['usb_data'])
         # return jsonify([datas.to_json() for datas in usb_data])
 
     @app.route('/statistiques')
@@ -135,10 +132,6 @@ def create_app(test_config=None):
         return render_template('statistiques_resultats.html', usb_datas_list_content=session['usb_datas_list_content'])
         # return render_template('statistiques_resultats.html')
     
-    @app.route('/home')
-    def home():
-        return render_template('home.html')
-
     @app.route('/statistiques_resultats')
     def statistiques_resultats():
         # Charger les données JSON 
@@ -220,5 +213,3 @@ def create_app(test_config=None):
         return statistiques_resultats_page
 
     return app
-
-

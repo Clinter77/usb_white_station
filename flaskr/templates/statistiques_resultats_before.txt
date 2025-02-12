@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% extends statistiques %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +15,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
 </head>
 <body class="container-fluid">
+
+    {% block navbar_menu %}
+    <ul>
+        <li><a href="#">Menu Item 1</a></li>
+        <li><a href="#">Menu Item 2</a></li>
+    </ul>
+    {% endblock %}
+    {% block statistiques %}
     <h1 class="mt-2">résultats d'analyses</h1>
     <!-- <img src="data:image/png;base64,{{ img_data }}" alt="Graphique"> -->
     <!-- <div id="charts">
@@ -85,6 +95,7 @@
             </ul>
         {% endif %}
     </div>
+    {% endblock %}
     <script>
         // usb_data = {{ usb_datas_list_content }}
         // console.log("usb_datas_list_content:", usb_datas_list_content);  // This will log to the browser console

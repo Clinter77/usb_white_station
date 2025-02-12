@@ -1,97 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>statistiques_resultats</title>
-    <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_flask_WStation.ico') }}">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <!-- fichier de style -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
-</head>
-<body class="container-fluid">
-    <h1 class="mt-2">résultats d'analyses</h1>
-    <!-- <img src="data:image/png;base64,{{ img_data }}" alt="Graphique"> -->
-    <!-- <div id="charts">
-        <img src="{{ url_for('static', filename='total_malwares.png') }}" alt="Total Malwares">
-    </div> -->
-    <!-- <div>
-        <ul>
-            {% if usb_datas_list_content.usb_id %}
-            <li><span>{{ usb_datas_list_content.usb_datas_list_content['usb_id'] }}</span>
-            {% else %}
-            <li><a href="{{ url_for('accueil') }}">Accueil</a>
-            {% endif %}
-        </ul>
-    </div> -->
-    <!-- <div>
-        {% if usb_datas_list_content %}
-            <p>{{ usb_datas_list_content }}</p>
-            <ul>
-                {% for element in usb_datas_list_content %}
-                    {% for index in range(element | length) %}
-                        {% for element in usb_datas_list_content[index] %}
-                            <td>{{ element }}</td>
-                            {% for nested_elem in element %}
-                                <td>{{ nested_elem }}</td> -->
-                                <!-- <li>{{ usb_data.usb_id }}</li> -->
-                                <!-- <li>{{ usb_datas_list_content[key] }}</li> -->
-                                <!-- <li>{{ usb_datas_list_content[usb_id] }}</li>
-                            {% endfor %}
-                        {% endfor %}
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div> -->
-    <!-- <div>
-        <ul>
-            {% if usb_datas_list_content %}
-                {% for usb_data in usb_datas_list_content %}
-                    <li>{{ usb_data.usb_id }}</li>
-                {% endfor %}
-            {% endif %}
-        </ul>
-        <ul>
-            {% for usb_datas in usb_datas_list_content.usb_id %}
-                <li>{{ usb_datas }}</li>
+{% extends "base.html" %}
+
+{% block title %}Statistiques Resultats{% endblock %}
+
+{% block navbar_menu %}
+<ul>
+    <li><a href="#">Menu Item 1</a></li>
+    <li><a href="#">Menu Item 2</a></li>
+</ul>
+{% endblock %}
+
+{% include "navbarmenu.html" %}
+
+{% block content %}
+<h1 class="mt-2">Résultats d'analyses</h1>
+
+<div>
+    {% if usb_datas_list_content %}
+        <ul> 
+            {% for usb_data in usb_datas_list_content.usb_datas_list_content %}
+                <hr class="item_hr">
+                <li>
+                    <strong>Clé USB</strong><br>
+                    <strong>ID:</strong> {{ usb_data.usb_id }}<br>
+                    <strong>Total Malwares:</strong> {{ usb_data.total_malwares }}<br>
+                    {% if usb_data.malware_types %}
+                        <strong>Details:</strong>
+                        {% if usb_data.malware_types.virus %}<td>Virus: {{ usb_data.malware_types.virus }}</td>{% endif %}
+                        {% if usb_data.malware_types.trojan %}<td>Trojan: {{ usb_data.malware_types.trojan }}</td>{% endif %}
+                        {% if usb_data.malware_types.ransomware %}<td>Ransomware: {{ usb_data.malware_types.ransomware }}</td>{% endif %}
+                        {% if usb_data.malware_types.worm %}<td>Worm: {{ usb_data.malware_types.worm }}</td>{% endif %}
+                    {% endif %}
+                </li>
+                <hr class="item_hr">
             {% endfor %}
         </ul>
-    </div> -->
-    <!-- <p>ci-dessous</p> -->
-    <div>
-        {% if usb_datas_list_content %}
-            <!-- {{ usb_datas_list_content.usb_datas_list_content }} -->
-            <ul> 
-                {% for usb_data in usb_datas_list_content.usb_datas_list_content %}
-                    <hr class="item_hr">
-                    <li>
-                        <strong>Clé USB</strong><br>
-                        <strong>ID:</strong> {{ usb_data.usb_id }}<br>
-                        <strong>total_malwares:</strong> {{ usb_data.total_malwares }}<br>
-                        {% if usb_data.malware_types %}
-                        <strong>Details:</strong>
-                            {% if usb_data.malware_types.virus %}<td>virus: {{ usb_data.malware_types.virus }}</td>{% endif %}
-                            {% if usb_data.malware_types.trojan %}<td>trojan: {{ usb_data.malware_types.trojan }}</td>{% endif %}
-                            {% if usb_data.malware_types.ransomware %}<td>ransomware: {{ usb_data.malware_types.ransomware }}</td>{% endif %}
-                            {% if usb_data.malware_types.worm %}<td>worm: {{ usb_data.malware_types.worm }}</td>{% endif %}
-                        {% endif %}
-                    </li>
-                    <hr class="item_hr">
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-    <script>
-        // usb_data = {{ usb_datas_list_content }}
-        // console.log("usb_datas_list_content:", usb_datas_list_content);  // This will log to the browser console
-    </script>
-    <!-- Bootstrap core JS -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
-</body>
-</html>
+    {% endif %}
+</div>
+
+<script>
+    // Uncomment to log the data to the console
+    // console.log("usb_datas_list_content:", {{ usb_datas_list_content | tojson }});
+</script>
+{% endblock %}
+
+<!-- Bootstrap core JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
