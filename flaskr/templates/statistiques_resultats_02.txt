@@ -1,0 +1,48 @@
+{% extends "navbarmenu.html" %}
+
+{% block title %}Statistiques Resultats{% endblock %}
+
+{% block navbar_menu %}
+<ul>
+    <li><a href="#">Menu Item 1</a></li>
+    <li><a href="#">Menu Item 2</a></li>
+</ul>
+{% endblock %}
+
+{% include "navbarmenu.html" %}
+
+{% block content %}
+<h1 class="mt-2">Résultats d'analyses</h1>
+
+<div>
+    {% if usb_datas_list_content %}
+        <ul> 
+            {% for usb_data in usb_datas_list_content.usb_datas_list_content %}
+                <hr class="item_hr">
+                <li>
+                    <strong>Clé USB</strong><br>
+                    <strong>ID:</strong> {{ usb_data.usb_id }}<br>
+                    <strong>Total Malwares:</strong> {{ usb_data.total_malwares }}<br>
+                    {% if usb_data.malware_types %}
+                        <strong>Details:</strong>
+                        {% if usb_data.malware_types.virus %}<td>Virus: {{ usb_data.malware_types.virus }}</td>{% endif %}
+                        {% if usb_data.malware_types.trojan %}<td>Trojan: {{ usb_data.malware_types.trojan }}</td>{% endif %}
+                        {% if usb_data.malware_types.ransomware %}<td>Ransomware: {{ usb_data.malware_types.ransomware }}</td>{% endif %}
+                        {% if usb_data.malware_types.worm %}<td>Worm: {{ usb_data.malware_types.worm }}</td>{% endif %}
+                    {% endif %}
+                </li>
+                <hr class="item_hr">
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+<script>
+    // Uncomment to log the data to the console
+    // console.log("usb_datas_list_content:", {{ usb_datas_list_content | tojson }});
+</script>
+{% endblock %}
+
+<!-- Bootstrap core JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
