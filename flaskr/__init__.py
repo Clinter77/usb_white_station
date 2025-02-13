@@ -54,11 +54,7 @@ def create_app(test_config=None):
     @app.route('/')
     def index():
         return render_template('index.html')
-    
-    @app.errorhandler(404)
-    def page_not_found(error):
-        return render_template('page_not_found.html'), 404
-    
+
     
     # fonctionnel avant
     # @app.route('/accueil')
@@ -138,86 +134,119 @@ def create_app(test_config=None):
     @app.route('/home')
     def home():
         return render_template('home.html')
-
-    @app.route('/statistiques_resultats')
-    def statistiques_resultats():
-        # Charger les données JSON 
-        
-        # with open('./json_files/json_file_example.json') as f:
-        #     data = json.load(f)
-        # Créer un graphique avec Matplotlib
-        # fig, ax = plt.subplots()
-        # ax.pie([data['value1'], data['value2'], data['value3']], labels=['Label1', 'Label2', 'Label3'], autopct='%1.1f%%')
-        # Extract categories and values
-        # categories = data['categories']
-        # values = data['values']
-
-        # # Create a pie chart
-        # fig, ax = plt.subplots()
-        # ax.pie(values, labels=categories, autopct='%1.1f%%')
-
-        # # Display the chart
-        # plt.show()
-
-        # # Sauvegarder le graphique dans un buffer
-        # buf = io.BytesIO()
-        # plt.savefig(buf, format='png')
-        # buf.seek(0)
-        # img = base64.b64encode(buf.getvalue()).decode('ascii')
-
-        
-            
-        try:
-            # Exemple de génération de graphique
-            # plt.plot([1, 2, 3], [4, 5, 6])
-            # plt.savefig('static/total_malwares.png')
-            # with open('./json_files/MalwaresJsonExample_01.json') as f:
-            #     data = json.load(f)
-
-            # usb_analysis = data
-            # print("usb_analysis :\n")
-            # print(usb_analysis)
-            pass
-            
-
-
-            # usb_ids = [usb_analysis['usb_id'] for usb in data['usb_analysis']]
-            # total_malwares = [usb['total_malwares'] for usb in data['usb_analysis']]
-
-            # Créer un graphique avec Matplotlib
-            # fig, ax = plt.subplots()
-            # ax.pie([data[usb_analysis['value1']], data['value2'], data['value1'], total_malwares['value2']], labels=['Label1', 'Label2', 'Label3'], autopct='%1.1f%%')
-            # Extract categories and values
-            # categories = data['categories']
-            # values = data['values']
-            # plt.show()
-            
-
-            # plt.bar(usb_ids, total_malwares)
-            # plt.xlabel('USB ID')
-            # plt.ylabel('Total Malwares')
-            # plt.title('Total Malwares per USB')
-
-            # current_dir = os.path.dirname(os.path.abspath(__file__))
-            # save_path = os.path.join(current_dir, 'static', 'total_malwares.png')
-            # plt.savefig(save_path)
-            # plt.close()
-            # print(f"Chart saved at {save_path}")
-        except Exception as e:
-            print(f"Error generating chart: {e}")
-        # MatplotlibChart.generate_chart(data)
-
-        # return render_template('statistiques_resultats.html', img_data=img)
-        # return render_template('statistiques_resultats.html', data=data)
-        # message_console =  render_template_string('''
-        #     <script>
-        #         console.log("Ceci est un message de debug depuis Python Flask, pour la redirection /statistiques_resultats");
-        #     </script>
-        # ''')
     
-        statistiques_resultats_page = render_template('statistiques_resultats.html')
-        # return message_console + statistiques_resultats_page
-        return statistiques_resultats_page
+    @app.route('/statistiques2')
+    def statistiques2():
+        # Vérifiez si le fichier existe
+        file_path = './json_files/json_file_example.json'
+        if not os.path.exists(file_path):
+            return "Le fichier JSON n'existe pas.", 404
+
+        # Lire les données JSON à partir du fichier
+        try:
+            with open(file_path) as f:
+                data = json.load(f)
+        except Exception as e:
+            return f"Erreur lors de la lecture du fichier JSON : {e}", 500
+
+        # Extraire les catégories et les valeurs
+        categories = data["categories"]
+        values = data["values"]
+
+        # Créer un graphique de type camembert
+        fig, ax = plt.subplots(figsize=(8, 8))
+        ax.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
+        ax.set_title('Pie Chart of Categories')
+
+        # Enregistrer dans un buffer temporaire
+        buf = io.BytesIO()
+        plt.savefig(buf, format='png')
+        buf.seek(0)
+        image_base64 = base64.b64encode(buf.getvalue()).decode('utf8')
+        buf.close()
+
+        return render_template('statistiques2.html', image_base64=image_base64)
+
+    # @app.route('/statistiques_resultats')
+    # def statistiques_resultats():
+    #     # Charger les données JSON 
+        
+    #     with open('./json_files/json_file_example.json') as f:
+    #         data = json.load(f)
+    #     # Créer un graphique avec Matplotlib
+    #     fig, ax = plt.subplots()
+    #     ax.pie([data['value1'], data['value2'], data['value3']], labels=['Label1', 'Label2', 'Label3'], autopct='%1.1f%%')
+    #     # Extract categories and values
+    #     categories = data['categories']
+    #     values = data['values']
+
+    #     # Create a pie chart
+    #     fig, ax = plt.subplots()
+    #     ax.pie(values, labels=categories, autopct='%1.1f%%')
+
+    #     # Display the chart
+    #     plt.show()
+
+    #     # Sauvegarder le graphique dans un buffer
+    #     buf = io.BytesIO()
+    #     plt.savefig(buf, format='png')
+    #     buf.seek(0)
+    #     img = base64.b64encode(buf.getvalue()).decode('ascii')
+
+        
+            
+    #     try:
+    #         # Exemple de génération de graphique
+    #         plt.plot([1, 2, 3], [4, 5, 6])
+    #         plt.savefig('static/total_malwares.png')
+    #         with open('./json_files/MalwaresJsonExample_01.json') as f:
+    #             data = json.load(f)
+
+    #         usb_analysis = data
+    #         print("usb_analysis :\n")
+    #         print(usb_analysis)
+            
+    #         usb_ids = [usb_analysis['usb_id'] for usb in data['usb_analysis']]
+    #         total_malwares = [usb['total_malwares'] for usb in data['usb_analysis']]
+
+    #         # Créer un graphique avec Matplotlib
+    #         # fig, ax = plt.subplots()
+    #         ax.pie([data[usb_analysis['value1']], data['value2'], data['value1'], total_malwares['value2']], labels=['Label1', 'Label2', 'Label3'], autopct='%1.1f%%')
+    #         # Extract categories and values
+    #         categories = data['categories']
+    #         values = data['values']
+    #         plt.show()
+            
+
+    #         plt.bar(usb_ids, total_malwares)
+    #         plt.xlabel('USB ID')
+    #         plt.ylabel('Total Malwares')
+    #         plt.title('Total Malwares per USB')
+
+    #         current_dir = os.path.dirname(os.path.abspath(__file__))
+    #         save_path = os.path.join(current_dir, 'static', 'total_malwares.png')
+    #         plt.savefig(save_path)
+    #         plt.close()
+    #         print(f"Chart saved at {save_path}")
+    #     except Exception as e:
+    #         print(f"Error generating chart: {e}")
+    #     MatplotlibChart.generate_chart(data)
+
+    #     # return render_template('statistiques_resultats.html', img_data=img)
+    #     # return render_template('statistiques_resultats.html', data=data)
+    #     # message_console =  render_template_string('''
+    #     #     <script>
+    #     #         console.log("Ceci est un message de debug depuis Python Flask, pour la redirection /statistiques_resultats");
+    #     #     </script>
+    #     # ''')
+    
+    #     statistiques_resultats_page = render_template('statistiques_resultats.html')
+    #     # return message_console + statistiques_resultats_page
+    #     return statistiques_resultats_page
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('page_not_found.html'), 404
 
     return app
 
