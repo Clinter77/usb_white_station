@@ -3,7 +3,7 @@
     color: white;
 }
 body {
-
+    opacity: 1;
     text-align: center;
     width: 100vw;
     height: 100vh;
@@ -12,12 +12,12 @@ body {
     background-repeat: no-repeat;
     color: white;
     font-family: Arial, sans-serif;
-}
-.container {
-    opacity: 0.5;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 h1 {
     text-align: center;
+    font-weight: bold;
     color: white;
 }
 hr {
