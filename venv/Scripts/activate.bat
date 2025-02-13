@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Christophe\Formations\MEWO-ESI\MEWO-apprentissage-cours-et-autres\Cours\ProjetCommun-USBsanitizer\usb_white_station\venv
+set VIRTUAL_ENV=C:\Users\Christophe\Formations\MEWO-ESI\MEWO-apprentissage-cours-et-autres\Cours\ProjetCommun-USBsanitizer1\usb_white_station\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

@@ -1,0 +1,28 @@
+/* styles.css */
+* {
+    color: white;
+}
+body {
+
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/static/istockphoto_1363932383.jpg"); /* L'image en fond */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+.container {
+    opacity: 0.5;
+}
+h1 {
+    text-align: center;
+    color: white;
+}
+hr {
+    border: 2px solid white;
+}
+.item_hr {
+    border: 2px dashed white;
+}
