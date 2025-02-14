@@ -65,25 +65,6 @@ def create_app(test_config=None):
     @app.route('/accueil')
     def accueil():
         print("page accueil")
-        # values = {
-        #         "usb_id": 0,
-        #         "usb_name": "Usb noire 32Go Jean Vier"
-        # }
-        # values = [
-        #     {
-        #         "usb_id": 0,
-        #         "usb_name": "Usb noire 32Go Jean Vier"
-        #     },
-        #     {
-        #         "usb_id": 1,
-        #         "usb_name": "Usb bleu 64Go Jean Vier"
-        #     },
-        #     {
-        #         "usb_id": 2,
-        #         "usb_name": "Usb verte 16Go Jean Vier"
-        #     }
-        # ]
-
         usb_data = [
             {
                 "usb_id": 0,

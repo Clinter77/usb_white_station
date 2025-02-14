@@ -1,17 +1,18 @@
-{% extends "navbarmenu.html" %}
-
-{% block title %}Statistiques Resultats{% endblock %}
-
-{% block navbar_menu %}
-<ul>
-    <li><a href="#">Menu Item 1</a></li>
-    <li><a href="#">Menu Item 2</a></li>
-</ul>
-{% endblock %}
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_flask_WStation.ico') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- fichier de style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>statistiques des résultats d'analyses</title>
+</head>
+<body>
 {% include "navbarmenu.html" %}
-
-{% block content %}
 <h1 class="mt-2">Résultats d'analyses</h1>
 
 <div>
@@ -37,12 +38,14 @@
     {% endif %}
 </div>
 
-<script>
-    // Uncomment to log the data to the console
-    // console.log("usb_datas_list_content:", {{ usb_datas_list_content | tojson }});
-</script>
-{% endblock %}
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.slim.min.js') }}"></script>
+<!-- Popper.js -->
+<script src="{{ url_for('static', filename='node_modules/@popperjs/core/dist/umd/popper.min.js') }}"></script>
+<!-- Bootstrap JS -->
+<script src="{{ url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
-<!-- Bootstrap core JS -->
+<!-- Bootstrap core JS
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
+</body>
