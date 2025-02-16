@@ -26,3 +26,6 @@ hr {
 .item_hr {
     border: 2px dashed white;
 }
+li {
+    list-style-type: none;
+}

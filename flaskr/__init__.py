@@ -49,6 +49,10 @@ def create_app(test_config=None):
             <h1>Hello, World!</h1>
         ''')
     
+    @app.route('/index')
+    def index_page():
+        return render_template('index.html')
+    
     # fonctionnel avant
     # @app.route('/accueil')
     # def accueil():
@@ -57,7 +61,8 @@ def create_app(test_config=None):
 
     @app.route('/')
     def index():
-        return render_template('index.html')
+        print("Rendering accueil.html")
+        return render_template('accueil.html')
 
     @app.route('/accueil')
     def accueil():

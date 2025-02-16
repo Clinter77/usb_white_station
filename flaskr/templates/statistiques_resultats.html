@@ -10,6 +10,20 @@
     <!-- fichier de style -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>statistiques des résultats d'analyses</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, blue, purple, red);
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        div {
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+        }
+    </style>
 </head>
 <body>
 {% include "navbarmenu.html" %}
@@ -30,6 +44,7 @@
                         {% if usb_data.malware_types.trojan %}<td>Trojan: {{ usb_data.malware_types.trojan }}</td>{% endif %}
                         {% if usb_data.malware_types.ransomware %}<td>Ransomware: {{ usb_data.malware_types.ransomware }}</td>{% endif %}
                         {% if usb_data.malware_types.worm %}<td>Worm: {{ usb_data.malware_types.worm }}</td>{% endif %}
+                        
                     {% endif %}
                 </li>
                 <hr class="item_hr">

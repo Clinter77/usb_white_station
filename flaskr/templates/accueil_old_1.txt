@@ -9,30 +9,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- fichier de style -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Page d'accueil - W Station Project</title>
-    <!-- <style>
-        body {
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(to bottom, blue, purple, red);
-            background-size: cover;
-            background-repeat: no-repeat;
-            color: white;
-        }
-        div {
-            margin-top: 2vh;
-            margin-bottom: 2vh;
-        }
-    </style> -->
+    <title>Page d'accueil - White Station Project</title>
 </head>
 <body>
     {% include "navbarmenu.html" %}
-    <h1 class="mt-2">Bienvenue sur le projet W Station</h1>
+    <h1 class="mt-2">Bienvenue sur le projet White Station</h1>
 
     <p>Pour voir les statistiques des analyses réalisées, l'entrée est ci-dessous</p>
     <p class="btn btn-primary">
         <a href="{{ url_for('statistiques') }}" class="text-white">statistiques des analyses</a>
     </p>
+    
+    <!-- <script type="text/javascript">
+        // Passer usb_data depuis Flask
+        var usb_data = {{ usb_data | tojson | safe}};
+        console.log("usb_data:", usb_data);  // This will log to the browser console
+    </script> -->
 
     <!-- jQuery -->
     <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.slim.min.js') }}"></script>
