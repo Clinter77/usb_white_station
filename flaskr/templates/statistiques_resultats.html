@@ -39,14 +39,20 @@
                     <strong>ID:</strong> {{ usb_data.usb_id }}<br>
                     <strong>Total Malwares:</strong> {{ usb_data.total_malwares }}<br>
                     {% if usb_data.malware_types %}
-                        <strong>Details:</strong>
+                        <strong>Details:</strong><br>
                         {% if usb_data.malware_types.virus %}<td>Virus: {{ usb_data.malware_types.virus }}</td>{% endif %}
                         {% if usb_data.malware_types.trojan %}<td>Trojan: {{ usb_data.malware_types.trojan }}</td>{% endif %}
                         {% if usb_data.malware_types.ransomware %}<td>Ransomware: {{ usb_data.malware_types.ransomware }}</td>{% endif %}
-                        {% if usb_data.malware_types.worm %}<td>Worm: {{ usb_data.malware_types.worm }}</td>{% endif %}
-                        
+                        {% if usb_data.malware_types.worm %}<td>Worm: {{ usb_data.malware_types.worm }}</td>{% endif %}    
                     {% endif %}
+                    {% for value in usb_data.infected_files %}
+                    {% if value %}
+                        {% if value.file_name %}<strong>file_name:</strong> {{ value.file_name }}<br>{% endif %}
+                        {% if value.malware_type %}<strong>malware_type:</strong> {{ value.malware_type }}<br>{% endif %}
+                    {% endif %}
+                {% endfor %}
                 </li>
+                
                 <hr class="item_hr">
             {% endfor %}
         </ul>
