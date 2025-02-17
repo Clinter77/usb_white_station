@@ -13,8 +13,6 @@
     <style>
         body {
             background: linear-gradient(to bottom, rgb(73, 0, 73), rgb(160, 1, 160));
-            width: 100vw;
-            height: 100vh;
             background-size: cover;
             background-repeat: no-repeat;
             color: white;
@@ -30,7 +28,7 @@
         }
     </style>
 </head>
-<body class="container">
+<body>
 {% include "navbarmenu.html" %}
 <h1 class="mt-2">Résultats d'analyses</h1>
 <div class="container mt-4 gradient-background">
@@ -51,9 +49,42 @@
             {% endfor %}
         </ul>
       {% endfor %}
-    <!-- <hr class="item_hr"> -->
+    <hr class="item_hr">
   {% endif %}
 </div>
+<!-- <div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+</div> -->
+
 <!-- jQuery -->
 <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.slim.min.js') }}"></script>
 <!-- Popper.js -->
