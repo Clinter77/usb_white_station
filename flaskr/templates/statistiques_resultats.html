@@ -25,15 +25,15 @@
         }
         .gradient-background {
           background: linear-gradient(to bottom, blue, purple, red);
-            padding: 20px;
+            padding: 1em;
             border-radius: 5px;
         }
     </style>
 </head>
-<body class="container">
+<body class="container-fluid w-100 h-100">
 {% include "navbarmenu.html" %}
 <h1 class="mt-2">Résultats d'analyses</h1>
-<div class="container mt-4 gradient-background">
+<div class="gradient-background container-md .col-md-4">
   {% if usb_datas_list_content %}
     {% for usb_data in usb_datas_list_content.usb_datas_list_content %}
       <ul class="list-group">
