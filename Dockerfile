@@ -32,6 +32,8 @@ RUN apk add --no-cache nodejs npm
 COPY package.json package-lock.json ./
 RUN npm install
 
+
+
 # Exposer le port 5000
 EXPOSE 5000
 
