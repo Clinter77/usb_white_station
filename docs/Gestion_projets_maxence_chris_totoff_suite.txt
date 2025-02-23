@@ -1,0 +1,431 @@
+Gestion_projets_maxence_chris_chris_suite
+
+Après avoir exécuté la commande : docker build -t flask-app .
+docker build -t flask-app .
+
+lancer le Serveur tout en montant un fichier JSON dans un conteneur temporaire
+docker run -p 5000:5000 -v /c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/analysis.json:/flaskr/json_files/analysis.json flask-app
+docker run -p 5000:5000 -v /C/Users/Admin/Desktop/analysis.json:/flaskr/json_files/analysis.json flask-app
+docker run -p 5000:5000 -v /C/Users/Admin/Desktop/analysis.json:/flaskr/json_files/analysis.json flask-app
+
+Pour monter le fichier JSON d'analyses et ensuite lancer votre commande habituelle, vous pouvez suivre ces étapes :
+
+Monter le fichier JSON dans un conteneur temporaire :
+
+Utilisez un conteneur temporaire pour monter le fichier JSON et vérifier qu'il est correctement monté.
+docker run -it --name temp-container -v /c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json alpine /bin/sh
+Cette commande utilise l'image alpine (une image légère de Linux) et monte le fichier JSON dans le conteneur. Vous pouvez vérifier que le fichier est monté correctement en utilisant /bin/sh.
+Vérifier le fichier JSON dans le conteneur temporaire :
+
+Une fois dans le conteneur temporaire, vérifiez que le fichier JSON est monté correctement.
+ls /flaskr/json_files/
+cat /flaskr/json_files/MalwaresJsonExampleToMount_01.json
+Si le fichier est monté correctement, vous pouvez quitter le conteneur temporaire en tapant exit.
+Lancer votre commande habituelle :
+
+Maintenant que vous avez vérifié que le fichier JSON est monté correctement, vous pouvez lancer votre commande habituelle pour démarrer votre application Flask.
+docker run -p 5000:5000 -v /c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json flask-app
+
+
+
+Avant : 
+Lancer la commande suivante dans le Terminal pour mettre à jour l'importation du fichier JSON avant l'affichage de l'onglet dans le navigateur
+docker run -d -p 5000:5000 -v $(pwd)/C:/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:./json_files/EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:./json_files/analysis.json flask-app
+
+docker run -d -p 5000:5000 -v c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json flask-app
+
+Plutôt exécuté cette commande, permettant de pouvoir ensuite interrompre l'exécution du Serveur avec le port choisi : 
+docker run -it -p 5000:5000 -v c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json flask-app /bin/sh
+Ainsi je dispose d'un Terminal à l'intérieur du Container
+Et peux ainsi l'arrêter avec Control C
+
+# ajouter un point de montage direct du fichier des analyses JSON
+# ce point de montage pour mettre à jour le fichier JSON devrait probablement se faire avant la copie des fichiers
+
+
+Scanner les processus tournant sur le port 5000, puis forcer leurs arrêts (ici avec le process ID 10036)
+netstat -ano | findstr :5000
+taskkill /PID 10036 /F
+
+Pour exécuter votre commande Docker en deux temps et faciliter l'arrêt du serveur avec Ctrl+C, vous pouvez d'abord lancer le conteneur en mode interactif sans le détacher (-d), puis exécuter votre application Flask manuellement à l'intérieur du conteneur. Voici comment procéder :
+
+Lancer le conteneur en mode interactif :
+
+docker run -it -p 5000:5000 -v /c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json flask-app /bin/bash
+Cette commande démarre le conteneur et vous donne accès à un terminal interactif à l'intérieur du conteneur.
+
+Exécuter votre application Flask manuellement : Une fois dans le terminal du conteneur, exécutez votre application Flask :
+
+python /path/to/your/app.py
+Remplacez /path/to/your/app.py par le chemin correct vers votre fichier app.py à l'intérieur du conteneur.
+
+Arrêter le serveur avec Ctrl+C : Lorsque vous souhaitez arrêter le serveur, vous pouvez simplement utiliser Ctrl+C dans le terminal interactif.
+
+Exemple complet :
+Lancer le conteneur en mode interactif :
+
+docker run -it -p 5000:5000 -v /c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json flask-app /bin/bash
+Exécuter l'application Flask à l'intérieur du conteneur :
+
+python /app/app.py
+Arrêter le serveur avec Ctrl+C lorsque vous avez terminé.
+
+
+waked
+ozint
+https://www.osint4fun.eu/fr/
+https://ozint.eu
+
+waked
+https://www.youtube.com/watch?v=4YAtXZhCyzE
+
+underscore
+https://www.youtube.com/results?search_query=underscore+
+
+kali linux
+https://www.youtube.com/watch?v=QLe-82d4oDM
+
+cookie connecté
+https://www.youtube.com/@Cookieconnecte
+
+mister robot
+https://www.youtube.com/results?search_query=mister+robot
+
+root me
+https://www.root-me.org/
+
+hackthebox
+https://www.hackthebox.com/
+
+hack the box
+
+rootme
+
+Comment sanitarizer une USB pour la rendre sûre
+
+circlean (Luxembourg) -> ils ont une solution qui résout en partie ce problème
+
+Proposer une solution qui permette cela ...
+yopmail
+
+nato jira
+
+start with rapsberry pico
+
+attaque 1 - par sur-tension :
+USB killer
+Moyen de protection : https://usbkill.com/products/usbkill-shield
+
+plein de sources du formateur Mr Jobard ici :
+https://mewo.r3z.fr/
+https://wiki.doppel.pro/fr/Home/liste-services-info-mewo
+ 
+Heck5 : 
+https://hak5.org/
+
+https://arduino-france.site/
+
+mouser electronics
+https://www.mouser.fr/?utm_source=bing&utm_medium=cpc&utm_campaign=Brand%20France&utm_term=Mouser%20Electronics&utm_content=Brand%20Mouser%20French
+-> passer par Mr Jobard pour les composants, etc ...
+
+Pour nos partages de notre groupe : 
+https://www.notion.so/fr-fr
+clintchris777@laposte.net
+
+https://www.notion.so/Guide-de-d-marrage-823798dcc59648a1839b7cefcf742252
+https://usbkill.com/products/usbkill-shield
+https://cyber.gouv.fr/publications/profil-de-fonctionnalites-et-de-securite-sas-et-station-blanche-reseaux-non-classifies
+
+Hack 5 on plug et tout les scripts se lancent automatiquement
+
+Rapsberry PICO
+Rapsberry PI 4 -> il m'en faudra sûrement un (prévoir environ 70€-100€) 4Go de RAM
+Le choix se porte sur un Raspberry PI 4 B+ de 4GB
+
+Arduino
+
+UTM -> La gestion unifiée des menaces
+UTM Sophos : https://www.sophos.com/fr-fr/products/unified-threat-management 
+
+BCS Informatique à Metz Nord (ils ferment à 19h)
+Appeler avant car ils n'en n'auront pas en stock
+
+Container Clam AV
+
+Au 06 mars 2024 - 06/03/2024
+Pour moi : 
+
+Liens :
+	notion 		https://www.notion.so/ddec4f30e7ae493c982488b20bde3975?v=4a33f223d7d143c0bab3a8443e82d61b
+	yoloctf 	https://yoloctf.org/yoloctf/index.php?p=Password
+
+sudo su
+su -
+
+puis ./mon-script.sh pour l'exécuter, mon script Batch Shell
+
+5 / 5 au boulot
+
+Au moment de se connecter, Jean réalise qu'il n'a, cette fois encore, aucune idée du login/password utilisé par Jar Jar.
+Il n'a pas envie de se taper une nouvelle liste à la main, et décide d'automatiser la saisie des mots de passe avec THC Hydra.
+THC Hydra est un outil qui va brute forcer des login à partir de listes de user/password.
+La doc de THC-Hydra est disponible en https://github.com/vanhauser-thc/thc-hydra
+
+https://github.com/vanhauser-thc/thc-hydra
+
+Il lance une kali et récupère deux fichiers unix_users.txt et unix_passwords.txt qui sont rangés avec d'autres dictionnaires de mots de passe dans
+
+/usr/share/wordlists/metasploit/. 
+Ces fichiers sont disponibles dans le terminal en
+
+- challenges/ctf-passwd/unix_users.txt 
+- challenges/ctf-passwd/unix_passwords.txt 
+
+tu pourrais aller plus loin avec les certifications cnil, anssi, google... pour la partie théorique
+et les plateformes root-me, ozint, tryhackme, badservers.com... pour la partie pratique
+
+----------------------
+
+2025/01/08
+
+sitechris7.netlify.app 	projet suites
+
+Me faire un script JS sur mon site qui détectera au moment du onload() pour incrémenter le nombre de chargements de mon site principal 
+Pour mon projet de liste de fichiers audios et autres contenus, on oublie les films (trop lourd) limitations plans gratuits, stocker mes fichiers .mp3 sous forme de blogs, et seraient hébergées dans un FTP par exempl
+avec le lien fourni pour pouvoir les lire dans Angular (via Node JS). Prévoir un accès à tout le monde à cette API, sauf pour une certaine partie avec mon contenu (cours, etc ...) où là il faudrait s'y connecter pour y accéder
+
+
+Notre projet commun : 
+
+fichier JSON. Voici le code mis à jour :
+
+import json
+import matplotlib.pyplot as plt
+
+# JSON data
+json_data = '''
+{
+    "categories": [
+        "Category1",
+        "Category2",
+        "Category3"
+    ],
+    "values": [
+        10,
+        20,
+        30
+    ]
+}
+'''
+
+# Parse JSON data
+data = json.loads(json_data)
+
+# Extract categories and values
+categories = data['categories']
+values = data['values']
+
+# Create a pie chart
+fig, ax = plt.subplots()
+ax.pie(values, labels=categories, autopct='%1.1f%%')
+
+# Display the chart
+plt.show()
+
+-----------------------------------------------------------------------------------------------------------
+
+20250116
+
+Autre sujet, dans une solution de projet qui porterait sur des analyses de malwares qui pourraient éventuellement  être présents sur une clé USB, laquelle serait en cours d'analyses. En fin de processus d'analyses de plusieurs clés USB quels pourraient être les données les plus pertinentes à faire s'afficher dans des graphiques, des statistiques ? Et pourrais-tu me donner un exemple de JSON pour coller à mes besoins (c'est dans ce fichier JSON qui seront contenus les résultats des analyses) ? ce fichier JSON sera utilisé dans un projet Flask, Python, avec Matplotlib, et l'administrateur pourra voir s'afficher toutes ces données sous forme de statistiques et de graphiques ...
+
+Pour un projet d’analyse de malwares sur des clés USB, voici quelques données pertinentes que tu pourrais afficher sous forme de graphiques et de statistiques :
+
+Nombre total de malwares détectés : Un graphique montrant le nombre total de malwares détectés sur chaque clé USB.
+Types de malwares : Un diagramme à secteurs ou un histogramme montrant la répartition des différents types de malwares (virus, trojans, ransomwares, etc.).
+Fréquence des malwares : Un graphique montrant la fréquence d’apparition des malwares les plus courants.
+Dates de détection : Un graphique en courbes montrant le nombre de malwares détectés au fil du temps.
+Taux de détection par clé USB : Un graphique à barres montrant le taux de détection de malwares pour chaque clé USB analysée.
+Statistiques sur les fichiers infectés : Un graphique montrant le nombre de fichiers infectés par clé USB et par type de fichier.
+Exemple de JSON
+Voici un exemple de fichier JSON contenant les résultats des analyses :
+
+JSON
+
+{
+    "usb_analysis": [
+        {
+            "usb_id": "USB001",
+            "total_malwares": 5,
+            "malware_types": {
+                "virus": 2,
+                "trojan": 1,
+                "ransomware": 1,
+                "worm": 1
+            },
+            "detection_dates": [
+                "2025-01-10",
+                "2025-01-11",
+                "2025-01-12"
+            ],
+            "infected_files": [
+                {
+                    "file_name": "file1.exe",
+                    "malware_type": "virus"
+                },
+                {
+                    "file_name": "file2.doc",
+                    "malware_type": "trojan"
+                },
+                {
+                    "file_name": "file3.pdf",
+                    "malware_type": "ransomware"
+                }
+            ]
+        },
+        {
+            "usb_id": "USB002",
+            "total_malwares": 3,
+            "malware_types": {
+                "virus": 1,
+                "trojan": 2
+            },
+            "detection_dates": [
+                "2025-01-13",
+                "2025-01-14"
+            ],
+            "infected_files": [
+                {
+                    "file_name": "file4.exe",
+                    "malware_type": "virus"
+                },
+                {
+                    "file_name": "file5.doc",
+                    "malware_type": "trojan"
+                }
+            ]
+        }
+    ]
+}
+Code généré par l'IA. Examinez et utilisez soigneusement. Plus d'informations sur la FAQ.
+Utilisation avec Flask et Matplotlib
+Pour afficher ces données sous forme de graphiques avec Flask et Matplotlib, tu peux suivre ces étapes :
+
+Charger les données JSON :
+Python
+
+import json
+
+with open('results.json') as f:
+    data = json.load(f)
+Code généré par l'IA. Examinez et utilisez soigneusement. Plus d'informations sur la FAQ.
+Créer des graphiques avec Matplotlib :
+Python
+
+import matplotlib.pyplot as plt
+
+# Exemple : Nombre total de malwares par clé USB
+usb_ids = [usb['usb_id'] for usb in data['usb_analysis']]
+total_malwares = [usb['total_malwares'] for usb in data['usb_analysis']]
+
+plt.bar(usb_ids, total_malwares)
+plt.xlabel('Clé USB')
+plt.ylabel('Nombre total de malwares')
+plt.title('Nombre total de malwares par clé USB')
+plt.show()
+Code généré par l'IA. Examinez et utilisez soigneusement. Plus d'informations sur la FAQ.
+Intégrer les graphiques dans Flask :
+Python
+
+from flask import Flask, render_template
+import io
+import base64
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    # Créer le graphique
+    fig, ax = plt.subplots()
+    ax.bar(usb_ids, total_malwares)
+    ax.set_xlabel('Clé USB')
+    ax.set_ylabel('Nombre total de malwares')
+    ax.set_title('Nombre total de malwares par clé USB')
+
+    # Convertir le graphique en image
+    img = io.BytesIO()
+    fig.savefig(img, format='png')
+    img.seek(0)
+    plot_url = base64.b64encode(img.getvalue()).decode()
+
+    return render_template('index.html', plot_url=plot_url)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+pip install flask-bootstrap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------- danger -------
+------- danger -------
+------- danger -------
+
+
+
+
+
+
+
+
+
+
+pass' : Chris57@notion8
+
+
+
+
+
+
+
+
+
