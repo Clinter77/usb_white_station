@@ -10,7 +10,10 @@ docker build -t flask-app .
 lancer le Serveur tout en montant un fichier JSON dans un conteneur temporaire
 docker run -p 5000:5000 -v /c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/analysis.json:/flaskr/json_files/analysis.json flask-app
 docker run -p 5000:5000 -v /C/Users/Admin/Desktop/analysis.json:/flaskr/json_files/analysis.json flask-app
-docker run -p 5000:5000 -v /C/Users/Admin/Desktop/analysis.json:/flaskr/json_files/analysis.json flask-app
+docker run -p 5000:5000 -v \\wsl.localhost\Ubuntu-22.04\home\christophe\projects\analysis.json:/flaskr/json_files/analysis.json flask-app
+
+# docker run -p 5000:5000 -v /C/Users/SXGH9766/OneDrive - orange.com/Bureau/analysis.json:/flaskr/json_files/analysis.json flask-app
+docker run -p 5000:5000 -v \\wsl.localhost\Ubuntu-22.04\home\christophe\projects\analysis.json:/flaskr/json_files/analysis.json flask-app
 
 le fichier est monté dans :
 \\wsl.localhost\docker-desktop\mnt\docker-desktop-disk\data\desktop-containerd\daemon\io.containerd.snapshotter.v1.overlayfs\snapshots\127\fs\flaskr\json_files
