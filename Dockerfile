@@ -13,6 +13,7 @@ RUN apk add --no-cache freetype-dev libpng-dev
 # Copier le fichier requirements.txt et installer les dépendances Python avec cache
 COPY requirements.txt .
 RUN pip install --no-cache-dir wheel
+# monte un cache pour les dépendances du projet pour optimiser le temps du build
 RUN --mount=type=cache,target=/root/.cache/pip pip install --no-cache-dir -r requirements.txt
 
 # Copier le code source de l'application

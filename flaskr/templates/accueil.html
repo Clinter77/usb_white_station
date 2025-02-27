@@ -24,14 +24,22 @@
             margin-bottom: 2vh;
         }
     </style> -->
+    <style>
+        p, a {
+            color: black;
+            /* text-shadow: 2px 2px #5d17a3; */
+        }
+    </style>
 </head>
 <body>
     {% include "navbarmenu.html" %}
-    <h1 class="mt-2">Bienvenue sur le projet W Station</h1>
+    <!-- <h1 class="shadow p-3 mb-5 bg-white rounded">Bienvenue sur le projet W Station</h1> -->
+    <h1>Bienvenue sur le projet W Station</h1>
     <img src="../static/ImageUsbWhiteStation-removebg-preview.png" alt="ImageUsbWhiteStation-removebg-preview" class="mt-5 mb-5">
-    <p>Pour voir les statistiques des analyses réalisées, l'entrée est ci-dessous</p>
+    <!-- <p class="shadow p-3 mb-5 bg-white rounded">Pour voir les statistiques des analyses réalisées, l'entrée est ci-dessous</p> -->
+    <h2>Pour voir les statistiques des analyses réalisées, l'entrée est ci-dessous</h2>
     <p class="btn btn-info">
-        <a href="{{ url_for('statistiques') }}" class="text-white">statistiques des analyses</a>
+        <a href="{{ url_for('statistiques') }}">statistiques des analyses</a>
     </p>
 
     <!-- jQuery -->
