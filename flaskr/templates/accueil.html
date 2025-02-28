@@ -32,9 +32,19 @@
     </style>
 </head>
 <body>
-    {% include "navbarmenu.html" %}
-    <!-- <h1 class="shadow p-3 mb-5 bg-white rounded">Bienvenue sur le projet W Station</h1> -->
-    <h1>Bienvenue sur le projet W Station</h1>
+    <!-- encapsulation dans un container Flexbox pour qu'ils soient au même niveau : class="d-flex align-items-center" 
+    flex-grow-1 : Permet au <h1> de prendre tout l'espace disponible, ce qui aide à le centrer.
+    text-center : Centre le texte du <h1>.
+    justify-content-between : Assure que le <h1> et le menu sont espacés correctement, avec le menu à droite. 
+    -->
+    <div class="d-flex align-items-center">
+        <h1 class="flex-grow-1 text-center">Bienvenue sur le projet White Station</h1>
+        <div>
+            {% include "navbarmenu.html" %}
+        </div>
+    </div>
+    
+    
     <img src="../static/ImageUsbWhiteStation-removebg-preview.png" alt="ImageUsbWhiteStation-removebg-preview" class="mt-5 mb-5">
     <!-- <p class="shadow p-3 mb-5 bg-white rounded">Pour voir les statistiques des analyses réalisées, l'entrée est ci-dessous</p> -->
     <h2>Pour voir les statistiques des analyses réalisées, l'entrée est ci-dessous</h2>

@@ -19,10 +19,10 @@
             background-repeat: no-repeat;
             color: white;
         }
-        div {
+        /* div {
             margin-top: 2vh;
             margin-bottom: 2vh;
-        }
+        } */
         .gradient-background {
           background: linear-gradient(to bottom, blue, purple, red);
             padding: 1em;
@@ -40,9 +40,18 @@
         }
     </style>
 </head>
-<body class="container-fluid w-100 h-100"> 
-{% include "navbarmenu.html" %}
-<h1 class="mt-2">Résultats des analyses</h1>
+<body class="container-fluid w-100 h-100 mb-4"> 
+<!-- encapsulation dans un container Flexbox pour qu'ils soient au même niveau : class="d-flex align-items-center" 
+flex-grow-1 : Permet au <h1> de prendre tout l'espace disponible, ce qui aide à le centrer.
+text-center : Centre le texte du <h1>.
+justify-content-between : Assure que le <h1> et le menu sont espacés correctement, avec le menu à droite. 
+-->
+<div class="d-flex align-items-center">
+  <h1 class="flex-grow-1 text-center">Résultats des analyses</h1>
+  <div>
+      {% include "navbarmenu.html" %}
+  </div>
+</div>
 <div class="gradient-background main_container">
   {% if usb_datas_list_content %}
     {% for usb_data in usb_datas_list_content.usb_datas_list_content %}
