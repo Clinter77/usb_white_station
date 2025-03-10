@@ -1,4 +1,11 @@
-Flask>=3.0
-numpy>=1.26
-matplotlib>=3.0
-Flask-Bootstrap>=3.3
+# Flask>=3.0
+# numpy>=1.26
+# matplotlib>=3.0
+# Flask-Bootstrap>=3.3
+# jinja2>=3.1.6
+
+Flask
+numpy
+matplotlib
+Flask-Bootstrap
+jinja2
