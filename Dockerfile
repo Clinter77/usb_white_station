@@ -23,6 +23,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Installation de wheel (bien que cela soit généralement inclus dans les dépendances)
 RUN pip install --no-cache-dir wheel
 
+# Gestion des dépendances Python en cache
 RUN --mount=type=cache,target=/root/.cache/pip pip install --no-cache-dir -r requirements.txt
 
 
@@ -45,6 +46,7 @@ RUN npm install
 
 # Exposition du port 5000
 EXPOSE 5000
+
 
 # Commande pour exécuter l'application
 CMD ["python", "run.py", "--host=0.0.0.0"]

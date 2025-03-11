@@ -22,9 +22,10 @@ le fichier est monté dans :
 
 Sur notre Rapsberry PI :
 Pour m'y connecter, j'ouvre CMD (depuis n'importe où sur mon poste, puis) ssh stof@10.10.2.89
-
+avec mon fichier temporaire :
 docker run -p 5000:5000 -v /opt/web-cthd/analysis.json:/flaskr/json_files/analysis.json flask-app
-
+avec notre fichier d'analyses final :
+docker run -p 5000:5000 -v /opt/logs/logs.json:/flaskr/json_files/logs.json flask-app
 
 
 Pour monter le fichier JSON d'analyses et ensuite lancer votre commande habituelle, vous pouvez suivre ces étapes :
