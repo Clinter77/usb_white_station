@@ -6,7 +6,7 @@ import json
 import matplotlib.pyplot as plt
 import io
 import base64
-from flaskr.MatplotlibChart import MatplotlibChart
+# from flaskr.MatplotlibChart import MatplotlibChart
 
 def create_app(test_config=None):
     # create and configure the app

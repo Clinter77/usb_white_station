@@ -1,6 +1,8 @@
 
 Gestion_projets_maxence_chris_chris_suite
 
+.\venv\Scripts\activate
+
 Après avoir exécuté la commande : docker build -t flask-app .
 docker build -t flask-app .
 
