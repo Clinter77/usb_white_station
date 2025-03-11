@@ -55,43 +55,22 @@ justify-content-between : Assure que le <h1> et le menu sont espacés correcteme
 <div class="gradient-background main_container">
   {% if usb_datas_list_content %}
     {% for usb_data in usb_datas_list_content %}
-        <li class="list-group-item">Device Vendor: {{ usb_data["Device vendor"] }}</li>
-        <li class="list-group-item">Device Model: {{ usb_data["Device model"] }}</li>
-        <li class="list-group-item">Device Serial: {{ usb_data["Device serial"] }}</li>
-        {% if usb_data["Known viruses"] %}
-            <li class="list-group-item">Known Viruses: {{ usb_data["Known viruses"] }}</li>
-        {% endif %}
-        {% if usb_data["Engine version"] %}
-            <li class="list-group-item">Engine Version: {{ usb_data["Engine version"] }}</li>
-        {% endif %}
-        {% if usb_data["Scanned directories"] %}
-            <li class="list-group-item">Scanned Directories: {{ usb_data["Scanned directories"] }}</li>
-        {% endif %}
-        {% if usb_data["Scanned files"] %}
-            <li class="list-group-item">Scanned Files: {{ usb_data["Scanned files"] }}</li>
-        {% endif %}
-        {% if usb_data["Infected files"] %}
-            <li class="list-group-item">Infected Files: {{ usb_data["Infected files"] }}</li>
-        {% endif %}
-        {% if usb_data["Data scanned"] %}
-            <li class="list-group-item">Data Scanned: {{ usb_data["Data scanned"] }}</li>
-        {% endif %}
-        {% if usb_data["Data read"] %}
-            <li class="list-group-item">Data Read: {{ usb_data["Data read"] }}</li>
-        {% endif %}
-        {% if usb_data["Time"] %}
-            <li class="list-group-item">Time: {{ usb_data["Time"] }}</li>
-        {% endif %}
-        {% if usb_data["Start Date"] %}
-            <li class="list-group-item">Start Date: {{ usb_data["Start Date"] }}</li>
-        {% endif %}
-        {% if usb_data["End Date"] %}
-            <li class="list-group-item">End Date: {{ usb_data["End Date"] }}</li>
-        {% endif %}
-        {% if usb_data["Result"] %}
-            <li class="list-group-item">Result: {{ usb_data["Result"] }}</li>
-        {% endif %}
-    {% endfor %}
+      <ul class="list-group .col-2 rounded-4"> <!-- plus le rounded est elevé plus accentué est le radius appliqué rounded-4 est plus fort que rounded-3 -->
+        <td>Clé USB</td>
+          {% if usb_data.usb_id %}<li class="list-group-item">ID : {{ usb_data.usb_id }}</li>{% endif %}
+          {% if usb_data.total_malwares %}<li class="list-group-item">Total Malwares : {{ usb_data.total_malwares }}</li>{% endif %} 
+            <td>Details</td>
+              {% if usb_data.malware_types.virus %}<li class="list-group-item">Virus : {{ usb_data.malware_types.virus }}</li>{% endif %}
+              {% if usb_data.malware_types.trojan %}<li class="list-group-item">Trojan : {{ usb_data.malware_types.trojan }}</li>{% endif %}
+              {% if usb_data.malware_types.ransomware %}<li class="list-group-item">Ransomware : {{ usb_data.malware_types.ransomware }}</li>{% endif %}
+              {% if usb_data.malware_types.worm %}<li class="list-group-item">Worm : {{ usb_data.malware_types.worm }}</li>{% endif %}
+            {% for value in usb_data.infected_files %}
+              {% if value.file_name %}<li class="list-group-item">Nom du fichier infecté : {{ value.file_name }}</li>{% endif %}
+              {% if value.malware_type %}<li class="list-group-item">Type de malware rencontré : {{ value.malware_type }}</li>{% endif %}
+            {% endfor %}
+        </ul>
+      {% endfor %}
+    <!-- <hr class="item_hr"> -->
   {% endif %}
 </div>
 <!-- jQuery -->

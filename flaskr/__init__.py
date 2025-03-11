@@ -72,13 +72,13 @@ def create_app(test_config=None):
     @app.route('/statistiques')
     def statistiques():
         usb_datas_list_content = []
-        # file_path_json_file_analysis = './json_files/MalwaresJsonExample_01.json'
-        file_path_json_file_analysis = '/flaskr/json_files/analysis.json'
+        # file_path_json_file_analysis = '/flaskr/json_files/analysis.json'
+        file_path_json_file_analysis = '/flaskr/json_files/logs.json'
         with open(file_path_json_file_analysis, 'r') as f:
             usb_datas_list_content = json.load(f)
             # f.close()
-        session['usb_datas_list_content']=usb_datas_list_content
-        return render_template('statistiques_resultats.html', usb_datas_list_content=session['usb_datas_list_content'])
+        # session['usb_datas_list_content']=usb_datas_list_content
+        return render_template('statistiques_resultats.html', usb_datas_list_content=usb_datas_list_content)
     
     @app.route('/statistiques2')
     def statistiques2():
