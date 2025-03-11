@@ -3,6 +3,9 @@ Gestion_projets_maxence_chris_chris_suite
 
 .\venv\Scripts\activate
 
+Sur notre Rapsberry PI :
+source /opt/web-cthd/usb_white_station/venv/bin/activate
+
 Après avoir exécuté la commande : docker build -t flask-app .
 docker build -t flask-app .
 
@@ -17,7 +20,10 @@ docker run -p 5000:5000 -v \\wsl.localhost\Ubuntu-22.04\home\christophe\projects
 le fichier est monté dans :
 \\wsl.localhost\docker-desktop\mnt\docker-desktop-disk\data\desktop-containerd\daemon\io.containerd.snapshotter.v1.overlayfs\snapshots\127\fs\flaskr\json_files
 
+Sur notre Rapsberry PI :
+Pour m'y connecter, j'ouvre CMD (depuis n'importe où sur mon poste, puis) ssh stof@10.10.2.89
 
+docker run -p 5000:5000 -v /opt/web-cthd/analysis.json:/flaskr/json_files/analysis.json flask-app
 
 
 
