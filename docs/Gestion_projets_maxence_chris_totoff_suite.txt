@@ -16,6 +16,7 @@ docker run -p 5000:5000 -v \\wsl.localhost\Ubuntu-22.04\home\christophe\projects
 
 # Sur WSL : 
 docker run -p 5000:5000 -v /mnt/c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/logs.json:/flaskr/json_files/logs.json flask-app
+docker run -p 5000:5000 -v /mnt/c/Users/Admin/Desktop/logs.json:/flaskr/json_files/logs.json flask-app
 
 # docker run -p 5000:5000 -v /C/Users/SXGH9766/OneDrive - orange.com/Bureau/analysis.json:/flaskr/json_files/analysis.json flask-app
 docker run -p 5000:5000 -v \\wsl.localhost\Ubuntu-22.04\home\christophe\projects\analysis.json:/flaskr/json_files/analysis.json flask-app
