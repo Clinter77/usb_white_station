@@ -39,8 +39,9 @@
           /* width: 50vw; */
         }
         span {
-            position: absolute;
-            margin-left: 10vw;
+            position: relative;
+            margin-left: 1em;
+            text-align: left;
         }
     </style>
 </head>
@@ -60,9 +61,9 @@ justify-content-between : Assure que le <h1> et le menu sont espacés correcteme
     {% if usb_datas_list_content %}
         {% for usb_data in usb_datas_list_content %}
         <ul>
-            <li class="list-group-item">Device Vendor: <span>{{ usb_data["Device vendor"] }}</span></li>
-            <li class="list-group-item">Device Model: <span>{{ usb_data["Device model"] }}</span></li>
-            <li class="list-group-item">Device Serial: <span>{{ usb_data["Device serial"] }}</span></li>
+            <li class="list-group-item">Device Vendor: </li><span>{{ usb_data["Device vendor"] }}</span>
+            <li class="list-group-item">Device Model: </li><span>{{ usb_data["Device model"] }}</span>
+            <li class="list-group-item mt-3">Device Serial: <span>{{ usb_data["Device serial"] }}</span></li>
             {% if usb_data["Known viruses"] %}
                 <li class="list-group-item">Known Viruses: <span>{{ usb_data["Known viruses"] }}</span></li>
             {% endif %}
