@@ -1,4 +1,4 @@
-#!/home/christophe/projects/usb_white_station/venv/bin/python3
+#!/home/christophe/projects/usb_white_station/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
