@@ -9,7 +9,13 @@ import base64
 # from flaskr.MatplotlibChart import MatplotlibChart
 
 def create_app(test_config=None):
-    # create and configure the app
+    """
+    Crée et configure l'application Flask.
+    Args:
+        test_config (dict, optionnel): Dictionnaire de configuration pour les tests. Par défaut à None
+    Returns:
+        app (Flask): Instance de l'application Flask configurée.
+    """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
@@ -17,31 +23,38 @@ def create_app(test_config=None):
     )
 
     if test_config is None:
-        # load the instance config, if it exists, when not testing
+        # charger la configuration de l'instance, si elle existe, lorsqu'on ne teste pas
         app.config.from_pyfile('config.py', silent=True)
     else:
-        # load the test config if passed in
+        # charger la configuration de test si elle est passée
         app.config.from_mapping(test_config)
 
-    # ensure the instance folder exists
+    # s'assurer que le dossier de l'instance existe
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
 
-    Bootstrap(app)  # Initialiser Bootstrap
+    Bootstrap(app)  # Initialisation de Bootstrap
 
     # ci-dessous les routes de l'application
 
     @app.route('/favicon.ico')
     def favicon():
+        """
+        Servir le fichier favicon.ico.
+        Returns:
+            Response: Réponse du fichier favicon.
+        """
         return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-    # a simple page that says hello
     @app.route('/hello')
     def hello():
-        # print("redirection /hello")
-        # return 'Hello, World!'
+        """
+        Afficher une page simple qui dit bonjour.
+        Returns:
+            str: Contenu HTML pour la page hello.
+        """
         return render_template_string('''
             <script>
                 console.log("Ceci est un message de debug depuis Python");
@@ -51,37 +64,52 @@ def create_app(test_config=None):
     
     @app.route('/index')
     def index_page():
+        """
+        Afficher la page index.
+        Returns:
+            Response: Template rendu de index.html.
+        """
         return render_template('index.html')
-    
-    # fonctionnel avant
-    # @app.route('/accueil')
-    # def accueil():
-    #     print("page accueil")
-    #     return render_template('accueil.html')
 
     @app.route('/')
     def index():
-        print("Rendering accueil.html")
+        """
+        Afficher la page accueil.html.
+        Returns:
+            Response: Template rendu de accueil.html.
+        """
         return render_template('accueil.html')
 
     @app.route('/accueil')
     def accueil():
-        print("Rendering accueil.html")
+        """
+        Afficher la page accueil.html.
+        Returns:
+            Response: Template rendu de accueil.html.
+        """
         return render_template('accueil.html')
 
     @app.route('/statistiques')
     def statistiques():
+        """
+        Afficher la page statistiques_resultats.html avec les données issues des analyses.
+        Returns:
+            Response: Template rendu de statistiques_resultats.html avec les données issues des analyses.
+        """
         usb_datas_list_content = []
         # file_path_json_file_analysis = '/flaskr/json_files/analysis.json'
         file_path_json_file_analysis = '/flaskr/json_files/logs.json'
         with open(file_path_json_file_analysis, 'r') as f:
             usb_datas_list_content = json.load(f)
-            # f.close()
-        # session['usb_datas_list_content']=usb_datas_list_content
         return render_template('statistiques_resultats.html', usb_datas_list_content=usb_datas_list_content)
     
     @app.route('/statistiques2')
     def statistiques2():
+        """
+        Afficher la page statistiques2.html avec un graphique en camembert.
+        Returns:
+            Response: Template rendu de statistiques2.html avec l'image du graphique en camembert.
+        """
         file_path = './json_files/json_file_example.json'
         if not os.path.exists(file_path):
             return "Le fichier JSON n'existe pas.", 404
@@ -113,10 +141,23 @@ def create_app(test_config=None):
     
     @app.route('/home')
     def home():
+        """
+        Afficher la page home.html.
+        Returns:
+            Response: Template rendu de home.html.
+        """
         return render_template('home.html')
 
     @app.errorhandler(404)
     def page_not_found(error):
+        """
+        Afficher la page page_not_found.html pour les erreurs 404.
+        Args:
+            error (Exception): L'erreur qui s'est produite.
+
+        Returns:
+            Response: Template rendu de page_not_found.html avec le code de statut 404.
+        """
         return render_template('page_not_found.html'), 404
 
     return app
