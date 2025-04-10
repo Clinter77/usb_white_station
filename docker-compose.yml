@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  flask_app:
+    build:
+      context: .  # Utilise le Dockerfile situé dans le répertoire actuel
+    image: flask-app  # Nom de l'image créée
+    ports:
+      - "443:443"  # Expose le port HTTPS
+    volumes:
+      - ./cert.pem:/app/cert.pem  # Certificat SSL
+      - ./key.pem:/app/key.pem    # Clé privée
+      - /home/christophe/projects/logs.json:/flaskr/json_files/logs.json  # Monte le fichier logs.json
+
