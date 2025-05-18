@@ -45,8 +45,8 @@ RUN npm install
 #     && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 # Exposition du port 5000
-EXPOSE 5000
-
+# EXPOSE 5000
+EXPOSE 443
 
 # Commande pour exécuter l'application
 CMD ["python", "run.py", "--host=0.0.0.0"]

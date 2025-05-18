@@ -2,3 +2,6 @@
 
 # dependencies
 /node_modules
+* Zone.Identifier
+*-Zone.Identifier
+*Zone.Identifier
