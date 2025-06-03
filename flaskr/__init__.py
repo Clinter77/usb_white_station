@@ -1,18 +1,20 @@
-# flaskr/__init__.py
-from flask import Flask, render_template, render_template_string, jsonify, send_from_directory, redirect, url_for, session
-from flask_bootstrap import Bootstrap
+"""Module providing a init function as entry point of project."""
 import os
 import json
-import matplotlib.pyplot as plt
 import io
 import base64
+from flask import Flask, render_template, render_template_string
+from flask import jsonify, send_from_directory, redirect, url_for, session
+from flask_bootstrap import Bootstrap
+import matplotlib.pyplot as plt
 # from flaskr.MatplotlibChart import MatplotlibChart
 
 def create_app(test_config=None):
     """
     Crée et configure l'application Flask.
     Args:
-        test_config (dict, optionnel): Dictionnaire de configuration pour les tests. Par défaut à None
+        test_config (dict, optionnel): Dictionnaire de configuration pour les tests.
+        Par défaut à None
     Returns:
         app (Flask): Instance de l'application Flask configurée.
     """
@@ -46,7 +48,8 @@ def create_app(test_config=None):
         Returns:
             Response: Réponse du fichier favicon.
         """
-        return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+        return send_from_directory(os.path.join(app.root_path, 'static'),
+                                   'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
     @app.route('/hello')
     def hello():
@@ -61,7 +64,7 @@ def create_app(test_config=None):
             </script>
             <h1>Hello, World!</h1>
         ''')
-    
+
     @app.route('/index')
     def index_page():
         """
@@ -94,15 +97,17 @@ def create_app(test_config=None):
         """
         Afficher la page statistiques_resultats.html avec les données issues des analyses.
         Returns:
-            Response: Template rendu de statistiques_resultats.html avec les données issues des analyses.
+            Response: Template rendu de statistiques_resultats.html
+            avec les données issues des analyses.
         """
-        usb_datas_list_content = []
+        usb_datas_list_content: list = []
         # file_path_json_file_analysis = '/flaskr/json_files/analysis.json'
-        file_path_json_file_analysis = '/flaskr/json_files/logs.json'
-        with open(file_path_json_file_analysis, 'r') as f:
+        file_path_json_file_analysis:str = '/flaskr/json_files/logs.json'
+        with open(file_path_json_file_analysis, mode='r', encoding='utf-8') as f:
             usb_datas_list_content = json.load(f)
-        return render_template('statistiques_resultats.html', usb_datas_list_content=usb_datas_list_content)
-    
+        return render_template(
+            'statistiques_resultats.html', usb_datas_list_content=usb_datas_list_content)
+
     @app.route('/statistiques2')
     def statistiques2():
         """
@@ -116,7 +121,7 @@ def create_app(test_config=None):
 
         # Lire les données JSON à partir du fichier
         try:
-            with open(file_path) as f:
+            with open(file_path, mode='r', encoding='utf-8') as f:
                 data = json.load(f)
         except Exception as e:
             return f"Erreur lors de la lecture du fichier JSON : {e}", 500
@@ -138,7 +143,7 @@ def create_app(test_config=None):
         buf.close()
 
         return render_template('statistiques2.html', image_base64=image_base64)
-    
+
     @app.route('/home')
     def home():
         """
@@ -149,7 +154,7 @@ def create_app(test_config=None):
         return render_template('home.html')
 
     @app.errorhandler(404)
-    def page_not_found(error):
+    def page_not_found(error=None):
         """
         Afficher la page page_not_found.html pour les erreurs 404.
         Args:

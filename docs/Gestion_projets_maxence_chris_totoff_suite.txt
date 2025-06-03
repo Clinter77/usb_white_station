@@ -21,7 +21,7 @@ docker run -p 5000:5000 -v /mnt/c/Users/Admin/Desktop/logs.json:/flaskr/json_fil
 # sur mon ordi pro - fonctionnel : 
 docker run -p 5000:5000 -v /home/christophe/projects/logs.json:/flaskr/json_files/logs.json flask-app
 
-# sur disque Mewo et WSL :
+# sur disque Mewo et WSL  - fonctionnel - 20250603:
 docker run -p 5000:5000 -v /home/christophe/projects/logs.json:/flaskr/json_files/logs.json flask-app
 
 
@@ -65,9 +65,9 @@ docker run -p 5000:5000 -v /c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJ
 
 Avant : 
 Lancer la commande suivante dans le Terminal pour mettre à jour l'importation du fichier JSON avant l'affichage de l'onglet dans le navigateur
-docker run -d -p 5000:5000 -v $(pwd)/C:/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:./json_files/EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:./json_files/analysis.json flask-app
+## non -docker run -d -p 5000:5000 -v $(pwd)/C:/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:./json_files/EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:./json_files/analysis.json flask-app
 
-docker run -d -p 5000:5000 -v c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json flask-app
+## non - docker run -d -p 5000:5000 -v c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json flask-app
 
 Plutôt exécuté cette commande, permettant de pouvoir ensuite interrompre l'exécution du Serveur avec le port choisi : 
 docker run -it -p 5000:5000 -v c/Users/Christophe.DESKTOP-EMFR2GT/Desktop/MalwaresJsonExampleToMount_01.json:/flaskr/json_files/MalwaresJsonExampleToMount_01.json flask-app /bin/sh
