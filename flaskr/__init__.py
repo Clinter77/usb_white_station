@@ -8,6 +8,7 @@ from flask import jsonify, send_from_directory, redirect, url_for, session
 from flask_bootstrap import Bootstrap
 import matplotlib.pyplot as plt
 # from flaskr.MatplotlibChart import MatplotlibChart
+from flask import abort
 
 def create_app(test_config=None):
     """
@@ -157,12 +158,29 @@ def create_app(test_config=None):
     def page_not_found(error=None):
         """
         Afficher la page page_not_found.html pour les erreurs 404.
-        Args:
-            error (Exception): L'erreur qui s'est produite.
-
         Returns:
             Response: Template rendu de page_not_found.html avec le code de statut 404.
         """
         return render_template('page_not_found.html'), 404
+    
+
+    @app.route('/trigger-teapot')
+    def trigger_teapot():
+        abort(418)
+
+    @app.errorhandler(418)
+    def page_teapot(error=None):
+        """
+        Afficher la page teapot.html pour l'erreur 418.
+        """
+        return render_template('teapot.html'), 418
+    
+    def test_page_teapot(client):
+        response = client.get('/trigger-teapot')
+        assert response.status_code == 418
+        assert b"Page Teapot" in response.data
+    
+    
+
 
     return app
