@@ -176,6 +176,12 @@ def create_app(test_config=None):
         return render_template('teapot.html'), 418
     
     def test_page_teapot(client):
+        """
+        Afficher la page teapot.html pour les erreurs 418.
+        Route de test avec le déclencheur via l'Endpoint /trigger-teapot
+        Returns:
+            Response: Template rendu de la pate Teapot (Théière) avec le code de statut 418 retourné.
+        """
         response = client.get('/trigger-teapot')
         assert response.status_code == 418
         assert b"Page Teapot" in response.data
