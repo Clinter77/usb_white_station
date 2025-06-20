@@ -185,6 +185,28 @@ def create_app(test_config=None):
         response = client.get('/trigger-teapot')
         assert response.status_code == 418
         assert b"Page Teapot" in response.data
+
+    @app.errorhandler(401)
+    def page_unauthorized(error=None):
+        return render_template('unauthorized.html'), 401
+    @app.route('/trigger-unauthorized')
+    def trigger_unauthorized():
+        abort(401)
+    def test_page_unauthorized(client):
+        response = client.get('/trigger-unauthorized')
+        assert response.status_code == 401
+        assert b"Page Unauthorized" in response.data
+    
+    @app.errorhandler(403)
+    def page_forbidden(error=None):
+        return render_template('forbidden.html'), 403
+    @app.route('/trigger-forbidden')
+    def trigger_forbidden():
+        abort(403)
+    def test_page_forbidden(client):
+        response = client.get('/trigger-forbidden')
+        assert response.status_code == 403
+        assert b"Page Forbidden" in response.data
     
     
 
