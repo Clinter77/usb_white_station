@@ -22,6 +22,9 @@ docker run --name flask_app -p 5000:5000 -v /home/christophe/projects/logs.json:
 # sur mon ordi pro - fonctionnel : 
 docker run -p 5000:5000 -v /home/christophe/projects/logs.json:/flaskr/json_files/logs.json flask-app
 
+# sur mon ordi perso - fonctionnel :
+docker run -p 5000:5000 -v /mnt/c/Users/Admin/Desktop/logs.json:/flaskr/json_files/logs.json flask-app
+
 # sur disque Mewo et WSL :
 docker run -p 5000:5000 -v /home/christophe/projects/logs.json:/flaskr/json_files/logs.json flask-app
 
