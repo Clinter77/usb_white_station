@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_flask_WStation.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='./pictures/favicon_flask_WStation.ico') }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- fichier de style -->
@@ -19,10 +19,6 @@
             background-repeat: no-repeat;
             color: white;
         }
-        /* div {
-            margin-top: 2vh;
-            margin-bottom: 2vh;
-        } */
         .gradient-background {
           background: linear-gradient(to bottom, blue, purple, red);
             padding: 1em;
@@ -109,7 +105,4 @@ justify-content-between : Assure que le <h1> et le menu sont espacés correcteme
 <!-- Bootstrap JS -->
 <script src="{{ url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
-<!-- Bootstrap core JS
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
 </body>

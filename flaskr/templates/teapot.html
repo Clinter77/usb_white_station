@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='./pictures/favicon_flask_WStation.ico') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- fichier de style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Teapot page</title>
+    <style>
+        p, a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex align-items-center">
+        <h1 class="flex-grow-1 text-center">Teapot page</h1>
+        <div>
+            {% include "navbarmenu.html" %}
+        </div>
+    </div>
+    
+    
+    <img src="../static/pictures/418-error-page.png" alt="418-error-page.png" class="rounded-3">
+
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.slim.min.js') }}"></script>
+    <!-- Popper.js -->
+    <script src="{{ url_for('static', filename='node_modules/@popperjs/core/dist/umd/popper.min.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+</body>
+</html>

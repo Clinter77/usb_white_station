@@ -7,7 +7,7 @@ body {
     text-align: center;
     width: 100vw;
     height: 100vh;
-    background-image: url("/static/pictures/istockphoto_1363932383.jpg"); /* L'image en fond */
+    background-image: url("/static/pictures/istockphoto_1363932383.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
