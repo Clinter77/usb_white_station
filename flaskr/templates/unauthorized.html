@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="{{ url_for('static', filename='./pictures/icon_warning.png') }}">
@@ -10,8 +10,35 @@
     <!-- fichier de style -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>401-unauthorized</title>
+    <style>
+        .main {
+            height: 75vh;
+            width: 70vw;
+            margin-left: 15vw;
+            margin-right: 15vw;
+            margin-bottom: 15vh;
+        }
+    </style>
 </head>
 <body>
-    <h2>401 - accès non-autorisé</h2>
+    <!-- Container pour aligner la navbar à droite -->
+    <div class="d-flex justify-content-end align-items-center mb-3">
+        {% include "navbarmenu.html" %}
+    </div>
+    
+    <!-- Partie principale -->
+    <div class="bg-dark text-white main rounded-5">
+        <h2 class="text-center">401 ACCES NON AUTORISE</h2>
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='pictures/icon_warning.png') }}" alt="icon_warning" class="img-fluid">
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.slim.min.js') }}"></script>
+    <!-- Popper.js -->
+    <script src="{{ url_for('static', filename='node_modules/@popperjs/core/dist/umd/popper.min.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 </body>
 </html>
