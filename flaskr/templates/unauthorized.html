@@ -9,14 +9,26 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- fichier de style -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>401-unauthorized</title>
+    <title>401 - unauthorized</title>
     <style>
+        body {
+            height: 100vh;
+        }
         .main {
-            height: 75vh;
+            height: 67vh;
             width: 70vw;
-            margin-left: 15vw;
-            margin-right: 15vw;
-            margin-bottom: 15vh;
+            margin-left: 10vw;
+            margin-right: 10vw;
+            margin-top: 3vh;
+            margin-bottom: 3vh;
+            padding-top: 3vh;
+        }
+        h2 {
+            padding-top: 0.5em;
+        }
+        .img-fluid {
+            width: 35%;
+            height: 35%;
         }
     </style>
 </head>
@@ -29,7 +41,7 @@
     <!-- Partie principale -->
     <div class="bg-dark text-white main rounded-5">
         <h2 class="text-center">401 ACCES NON AUTORISE</h2>
-        <div class="text-center">
+        <div class="text-center mb-2">
             <img src="{{ url_for('static', filename='pictures/icon_warning.png') }}" alt="icon_warning" class="img-fluid">
         </div>
     </div>
